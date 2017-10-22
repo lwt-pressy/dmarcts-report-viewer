@@ -185,13 +185,21 @@ function tmpl_page ($body, $reportid, $host_lookup = 1, $dom_select, $domains = 
 	$html[] = "  </head>";
 
 	$html[] = "  <body>";
-  $html[] = "  <div class='options'>Hostname Lookup is " . ($host_lookup ? "on" : "off" ) . " [<a href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a>]</div>";
+  $html[] = "  <div class='options'>Hostname Lookup is <b class='activated'>" . ($host_lookup ? "on" : "off" ) . "</b> [<a class='deactivated' href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a>]</div>";
   if ( count( $domains ) > 1 ) {
     $html[] = "<div class='options'>Domains: ";
     foreach( $domains as $d) {
-      $html[] = "[<a href=\"$url_dswitch&d=$d\">" . $d . "</a>] ";
+      if( $d == $dom_select ) {
+        $html[] = "<b class='activated'>$d</b> ";
+      } else {
+        $html[] = "[<a class='deactivated' href=\"$url_dswitch&d=$d\">" . $d . "</a>] ";
+      }
     }
-    $html[] = "<a href=\"$url_dswitch\">[all]</a></div>";
+    if( "" == $dom_select ) {
+      $html[] = "<b class='activated'>all</b></div>";
+    } else {
+      $html[] = "<a class='deactivated' href=\"$url_dswitch\">[all]</a></div>";
+    }
   }
 
 	$html[] = $body;
