@@ -68,25 +68,47 @@ table.reportdata tr.yellow {
 }
 
 .options {
-  font-size: 90%;
+  font-size: 80%;
   text-align: right;
   border: none;
-  width: 90%;
+  width: 95%;
+  padding: 0.4em;
 }
 
-/*
-.options .activated {
+.activated {
+/*  
+  border: none;
   color: white;
-  background: #08088A;
-  padding-left: 0.3em;
-  padding-right: 0.3em;
+  background: green;
+  padding: 0.2em;
+  padding-right: 0.4em;
+  padding-left: 0.4em;
+  text-decoration: none;
   font-weight: normal;
+*/  
 }
-*/
+
+.deactivated {
+  border: 1px solid black;
+  color: black;
+  background: orange;
+  padding: 0.2em;
+  padding-right: 0.4em;
+  padding-left: 0.4em;
+  text-decoration: none;
+}
+/*
+.deactivated:before {
+  content: '['
+}
+.deactivated:after {
+  content: ']'
+}
 
 .right {
 	text-align:right;
 }
+*/
 
 .center {
 	text-align:center;

@@ -193,21 +193,21 @@ function tmpl_page ($body, $reportid, $host_lookup = 1, $sort_order, $dom_select
 	$html[] = "  </head>";
 
 	$html[] = "  <body>";
-  $html[] = "  <div class='options'>Hostname Lookup is <b class='activated'>" . ($host_lookup ? "on" : "off" ) . "</b> [<a class='deactivated' href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a>]</div>";
-  $html[] = "  <div class='options'>Sort order is <b class='activated'>" . ($sort_order ? "ascending" : "descending" ) . "</b> [<a class='deactivated' href=\"$url_sswitch\">" . ($sort_order ? "descending" : "ascending" ) . "</a>]</div>";	
+  $html[] = "  <div class='options'>Hostname Lookup is <b class='activated'>" . ($host_lookup ? "on" : "off" ) . "</b> <a class='deactivated' href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a></div>";
+  $html[] = "  <div class='options'>Sort order is <b class='activated'>" . ($sort_order ? "ascending" : "descending" ) . "</b> <a class='deactivated' href=\"$url_sswitch\">" . ($sort_order ? "descending" : "ascending" ) . "</a></div>";	
   if ( count( $domains ) > 1 ) {
     $html[] = "<div class='options'>Domains: ";
     foreach( $domains as $d) {
       if( $d == $dom_select ) {
         $html[] = "<b class='activated'>$d</b> ";
       } else {
-        $html[] = "[<a class='deactivated' href=\"$url_dswitch&d=$d\">" . $d . "</a>] ";
+        $html[] = "<a class='deactivated' href=\"$url_dswitch&d=$d\">" . $d . "</a> ";
       }
     }
     if( "" == $dom_select ) {
       $html[] = "<b class='activated'>all</b></div>";
     } else {
-      $html[] = "<a class='deactivated' href=\"$url_dswitch\">[all]</a></div>";
+      $html[] = "<a class='deactivated' href=\"$url_dswitch\">all</a></div>";
     }
   }
 
