@@ -71,7 +71,7 @@ table.reportdata tr.yellow {
   font-size: 80%;
   text-align: right;
   border: none;
-  width: 95%;
+  width: 97%;
   padding: 0.4em;
 }
 
@@ -91,7 +91,7 @@ table.reportdata tr.yellow {
 .deactivated {
   border: 1px solid black;
   color: black;
-  background: orange;
+  background: lightgreen;
   padding: 0.2em;
   padding-right: 0.4em;
   padding-left: 0.4em;
