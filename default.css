@@ -2,9 +2,13 @@ h1 {
 	text-align: center;
 }
 
+.main {
+}
+
 table.reportlist {
 	margin: 2em auto 2em auto;
 	border-collapse: collapse;
+  clear: both;
 }
 
 table.reportlist td, table.reportlist th {
@@ -19,8 +23,9 @@ table.reportlist thead {
 table.reportlist tbody tr:first-child td {
 	padding-top: 10px;
 }
-
-
+table.reportlist tr.sum {
+	border-top: 1px solid grey;
+}
 
 .reportdesc {
 	font-weight: bold;
@@ -29,8 +34,6 @@ table.reportlist tbody tr:first-child td {
 	margin-left: auto;
     margin-right: auto;
 }
-
-
 
 table.reportdata {
 	margin: 2em auto 2em auto;
@@ -59,7 +62,6 @@ table.reportdata tr.yellow {
 	background-color: #FFFF00;
 }
 
-
 .footer {
 	font-size: 70%;
 	text-align: center;
@@ -69,17 +71,36 @@ table.reportdata tr.yellow {
 	padding-top: 10px;
 }
 
-
-.options {
-  font-size: 90%;
-  text-align: right;
-  border: none;
-  width: 90%;
+.optionblock {
+  background: lightgrey;
+  padding: 0.4em;
+	float: right;
+	margin: auto 2em 1em auto;
 }
 
+.options {
+  font-size: 80%;
+  text-align: left;
+  border: none;
+  width: 97%;
+  padding: 0.4em;
+}
 
-.right {
-	text-align:right;
+.activated {
+  font-weight: bold;
+}
+
+.deactivated {
+  border: 1px solid black;
+  color: black;
+  background: lightgreen;
+  padding: 0.2em;
+  padding-right: 0.4em;
+  padding-left: 0.4em;
+  text-decoration: none;
+}
+.deactivated:hover {
+    background-color: yellow;
 }
 
 .center {
