@@ -2,9 +2,13 @@ h1 {
 	text-align: center;
 }
 
+.main {
+}
+
 table.reportlist {
 	margin: 2em auto 2em auto;
 	border-collapse: collapse;
+  clear: both;
 }
 
 table.reportlist td, table.reportlist th {
@@ -67,25 +71,24 @@ table.reportdata tr.yellow {
 	padding-top: 10px;
 }
 
+.optionblock {
+  background: lightblue;
+  padding: 0.4em;
+	float: right;
+  margin-bottom: 1em;
+
+}
+
 .options {
   font-size: 80%;
-  text-align: right;
+  text-align: left;
   border: none;
   width: 97%;
   padding: 0.4em;
 }
 
 .activated {
-/*  
-  border: none;
-  color: white;
-  background: green;
-  padding: 0.2em;
-  padding-right: 0.4em;
-  padding-left: 0.4em;
-  text-decoration: none;
-  font-weight: normal;
-*/  
+  font-weight: bold;
 }
 
 .deactivated {

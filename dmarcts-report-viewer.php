@@ -42,7 +42,7 @@ function tmpl_reportList($allowed_reports, $host_lookup = 1, $sort_order, $dom_s
 	$reportlist[] = "";
 	$reportlist[] = "<!-- Start of report list -->";
 
-	$reportlist[] = "<h1>DMARC Reports" . ($dom_select == '' ? '' : " for " . htmlentities($dom_select)) . "</h1>";
+	$reportlist[] = "<h1 class='main'>DMARC Reports" . ($dom_select == '' ? '' : " for " . htmlentities($dom_select)) . "</h1>";
 	$reportlist[] = "<table class='reportlist'>";
 	$reportlist[] = "  <thead>";
 	$reportlist[] = "    <tr>";
@@ -193,24 +193,24 @@ function tmpl_page ($body, $reportid, $host_lookup = 1, $sort_order, $dom_select
 	$html[] = "  </head>";
 
 	$html[] = "  <body>";
-  $html[] = "  <div class='options'>Hostname Lookup is <b class='activated'>" . ($host_lookup ? "on" : "off" ) . "</b> <a class='deactivated' href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a></div>";
-  $html[] = "  <div class='options'>Sort order is <b class='activated'>" . ($sort_order ? "ascending" : "descending" ) . "</b> <a class='deactivated' href=\"$url_sswitch\">" . ($sort_order ? "descending" : "ascending" ) . "</a></div>";	
+  $html[] = "  <div class='optionblock'><div class='options'>Hostname Lookup is <span class='activated'>" . ($host_lookup ? "on" : "off" ) . "</span> <a class='deactivated' href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a></div>";
+  $html[] = "  <div class='options'>Sort order is <span class='activated'>" . ($sort_order ? "ascending" : "descending" ) . "</span> <a class='deactivated' href=\"$url_sswitch\">" . ($sort_order ? "descending" : "ascending" ) . "</a></div>";	
   if ( count( $domains ) > 1 ) {
     $html[] = "<div class='options'>Domains: ";
     foreach( $domains as $d) {
       if( $d == $dom_select ) {
-        $html[] = "<b class='activated'>$d</b> ";
+        $html[] = "<span class='activated'>$d</span> ";
       } else {
         $html[] = "<a class='deactivated' href=\"$url_dswitch&d=$d\">" . $d . "</a> ";
       }
     }
     if( "" == $dom_select ) {
-      $html[] = "<b class='activated'>all</b></div>";
+      $html[] = "<span class='activated'>all</span></div>";
     } else {
       $html[] = "<a class='deactivated' href=\"$url_dswitch\">all</a></div>";
     }
   }
-
+  $html[] = "</div>";   /* end optionblock */
 	$html[] = $body;
 
 	$html[] = "  <div class='footer'>Brought to you by <a href='http://www.techsneeze.com'>TechSneeze.com</a> - <a href='mailto:dave@techsneeze.com'>dave@techsneeze.com</a></div>";
