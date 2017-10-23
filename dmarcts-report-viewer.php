@@ -193,26 +193,27 @@ function tmpl_page ($body, $reportid, $host_lookup = 1, $sort_order, $dom_select
 	$html[] = "  </head>";
 
 	$html[] = "  <body>";
-  $html[] = "  <div class='optionblock'><div class='options'>Hostname Lookup is <span class='activated'>" . ($host_lookup ? "on" : "off" ) . "</span> <a class='deactivated' href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a></div>";
-  $html[] = "  <div class='options'>Sort order is <span class='activated'>" . ($sort_order ? "ascending" : "descending" ) . "</span> <a class='deactivated' href=\"$url_sswitch\">" . ($sort_order ? "descending" : "ascending" ) . "</a></div>";	
+  $html[] = "  <div class='optionblock'><div class='options'>Hostname Lookup: <span class='activated'>" . ($host_lookup ? "on" : "off" ) . "</span> <a class='deactivated' href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a></div>";
+  $html[] = "  <div class='options'>Sort order: <span class='activated'>" . ($sort_order ? "ascending" : "descending" ) . "</span> <a class='deactivated' href=\"$url_sswitch\">" . ($sort_order ? "descending" : "ascending" ) . "</a></div>";	
   if ( count( $domains ) > 1 ) {
-    $html[] = "<div class='options'>Domains: ";
+    $html[] = "<div class='options'>Domain(s): <span class='activated'>" . ( "" == $dom_select ? "all" : $dom_select ) . "</span>";
     foreach( $domains as $d) {
-      if( $d == $dom_select ) {
-        $html[] = "<span class='activated'>$d</span> ";
-      } else {
+      if( $d != $dom_select ) {
         $html[] = "<a class='deactivated' href=\"$url_dswitch&d=$d\">" . $d . "</a> ";
       }
     }
-    if( "" == $dom_select ) {
-      $html[] = "<span class='activated'>all</span></div>";
-    } else {
-      $html[] = "<a class='deactivated' href=\"$url_dswitch\">all</a></div>";
+    if( "" != $dom_select ) {
+      $html[] = "<a class='deactivated' href=\"$url_dswitch\">all</a>";
     }
   }
+  $html[] = "</div>";   /* end domain option */
+  
+  $html[] = "<div class='options'>Period: <span class='activated'>[to come]</span></div>";
+  
   $html[] = "</div>";   /* end optionblock */
-	$html[] = $body;
 
+  $html[] = $body;
+	
 	$html[] = "  <div class='footer'>Brought to you by <a href='http://www.techsneeze.com'>TechSneeze.com</a> - <a href='mailto:dave@techsneeze.com'>dave@techsneeze.com</a></div>";
 	$html[] = "  </body>";
 	$html[] = "</html>";

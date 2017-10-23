@@ -84,16 +84,23 @@ table.reportdata tr.yellow {
   border: none;
   width: 97%;
   padding: 0.4em;
+  white-space: nowrap;
 }
 
 .activated {
-  font-weight: bold;
+  border: 0px solid black;
+  color: black;
+  background: lightgreen;
+  padding: 0.2em;
+  padding-right: 0.4em;
+  padding-left: 0.4em;
+  text-decoration: none;
 }
 
 .deactivated {
   border: 1px solid black;
   color: black;
-  background: lightgreen;
+  background: orange;
   padding: 0.2em;
   padding-right: 0.4em;
   padding-left: 0.4em;
