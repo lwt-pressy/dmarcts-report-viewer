@@ -72,11 +72,10 @@ table.reportdata tr.yellow {
 }
 
 .optionblock {
-  background: lightblue;
+  background: lightgrey;
   padding: 0.4em;
 	float: right;
-  margin-bottom: 1em;
-
+	margin: auto 2em 1em auto;
 }
 
 .options {
@@ -100,18 +99,9 @@ table.reportdata tr.yellow {
   padding-left: 0.4em;
   text-decoration: none;
 }
-/*
-.deactivated:before {
-  content: '['
+.deactivated:hover {
+    background-color: yellow;
 }
-.deactivated:after {
-  content: ']'
-}
-
-.right {
-	text-align:right;
-}
-*/
 
 .center {
 	text-align:center;
