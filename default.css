@@ -78,6 +78,10 @@ table.reportdata tr.yellow {
 	margin: auto 2em 1em auto;
 }
 
+.optionlabel {
+  font-weight: bold;
+}
+
 .options {
   font-size: 80%;
   text-align: left;

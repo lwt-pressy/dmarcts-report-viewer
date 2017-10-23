@@ -171,7 +171,7 @@ function tmpl_reportData($reportnumber, $allowed_reports, $host_lookup = 1, $sor
 	return implode("\n  ",$reportdata);
 }
 
-function tmpl_page ($body, $reportid, $host_lookup = 1, $sort_order, $dom_select, $domains = array() ) {
+function tmpl_page ($body, $reportid, $host_lookup = 1, $sort_order, $dom_select, $domains = array(),$cssfile ) {
 	$html       = array();
         $url_hswitch = ( $reportid ? "?report=$reportid&hostlookup=" : "?hostlookup=" )
                 . ($host_lookup ? "0" : "1" )
@@ -189,14 +189,14 @@ function tmpl_page ($body, $reportid, $host_lookup = 1, $sort_order, $dom_select
 	$html[] = "<html>";
 	$html[] = "  <head>";
 	$html[] = "    <title>DMARC Report Viewer</title>";
-	$html[] = "    <link rel='stylesheet' href='default.css'>";
+	$html[] = "    <link rel='stylesheet' href='$cssfile'>";
 	$html[] = "  </head>";
 
 	$html[] = "  <body>";
-  $html[] = "  <div class='optionblock'><div class='options'>Hostname Lookup: <span class='activated'>" . ($host_lookup ? "on" : "off" ) . "</span> <a class='deactivated' href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a></div>";
-  $html[] = "  <div class='options'>Sort order: <span class='activated'>" . ($sort_order ? "ascending" : "descending" ) . "</span> <a class='deactivated' href=\"$url_sswitch\">" . ($sort_order ? "descending" : "ascending" ) . "</a></div>";	
+  $html[] = "  <div class='optionblock'><div class='options'><span class='optionlabel'>Hostname Lookup:</span> <span class='activated'>" . ($host_lookup ? "on" : "off" ) . "</span> <a class='deactivated' href=\"$url_hswitch\">" . ($host_lookup ? "off" : "on" ) . "</a></div>";
+  $html[] = "  <div class='options'><span class='optionlabel'>Sort order:</span> <span class='activated'>" . ($sort_order ? "ascending" : "descending" ) . "</span> <a class='deactivated' href=\"$url_sswitch\">" . ($sort_order ? "descending" : "ascending" ) . "</a></div>";	
   if ( count( $domains ) > 1 ) {
-    $html[] = "<div class='options'>Domain(s): <span class='activated'>" . ( "" == $dom_select ? "all" : $dom_select ) . "</span>";
+    $html[] = "<div class='options'><span class='optionlabel'>Domain(s):</span> <span class='activated'>" . ( "" == $dom_select ? "all" : $dom_select ) . "</span>";
     foreach( $domains as $d) {
       if( $d != $dom_select ) {
         $html[] = "<a class='deactivated' href=\"$url_dswitch&d=$d\">" . $d . "</a> ";
@@ -208,7 +208,7 @@ function tmpl_page ($body, $reportid, $host_lookup = 1, $sort_order, $dom_select
   }
   $html[] = "</div>";   /* end domain option */
   
-  $html[] = "<div class='options'>Period: <span class='activated'>[to come]</span></div>";
+  $html[] = "<div class='options'><span class='optionlabel'>Period:</span> <span class='activated'>[to come]</span></div>";
   
   $html[] = "</div>";   /* end optionblock */
 
@@ -230,6 +230,12 @@ function tmpl_page ($body, $reportid, $host_lookup = 1, $sort_order, $dom_select
 // must exist.
 include "dmarcts-report-viewer-config.php";
 $dom_select= '';
+if(!isset($dport)) {
+  $dbport="3306";
+}
+if(!isset($cssfile)) {
+  $cssfile="default.css";
+}
 
 if(isset($_GET['report']) && is_numeric($_GET['report'])){
   $reportid=$_GET['report']+0;
@@ -324,5 +330,6 @@ echo tmpl_page( ""
 	, $sortorder
 	, $dom_select
 	, $domains
+	, $cssfile
 );
 ?>
