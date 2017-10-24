@@ -230,6 +230,7 @@ function tmpl_page ($body, $reportid, $host_lookup = 1, $sort_order, $dom_select
 // must exist.
 include "dmarcts-report-viewer-config.php";
 $dom_select= '';
+
 if(!isset($dport)) {
   $dbport="3306";
 }
